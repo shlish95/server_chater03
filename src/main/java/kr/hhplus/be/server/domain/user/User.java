@@ -14,10 +14,16 @@ public class User {
     }
 
     public void charge(int amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("충전 금액은 0원 보다 커야합니다.");
+        }
         balance += amount;
     }
 
     public void pay(int amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("사용 금액은 0원 보다 커야합니다.");
+        }
         if (canPay(amount)) {
             throw new IllegalArgumentException("잔액이 부족합니다.");
         }
