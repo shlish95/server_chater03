@@ -1,9 +1,10 @@
 package kr.hhplus.be.server.infrastructure.entity;
 
 import jakarta.persistence.*;
+import kr.hhplus.be.server.domain.reservationSeat.ReservationSeatStatus;
 import lombok.*;
-
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "reservation_seat")
@@ -12,19 +13,18 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class ReservationSeatEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @EmbeddedId
-    private ReservationSeatId id;
+    private UUID userId;
 
-    @ManyToOne
-    @MapsId("reservationId")
-    @JoinColumn(name = "reservationId")
-    private ReservationEntity reservation;
+    private Long seatId;
 
-    @ManyToOne
-    @MapsId("seatId")
-    @JoinColumn(name = "seat_id")
-    private SeatEntity seat;
+    private LocalDateTime reservationAt;
 
     private LocalDateTime expiredAt;
+
+    @Enumerated(EnumType.STRING)
+    private ReservationSeatStatus status;
 }

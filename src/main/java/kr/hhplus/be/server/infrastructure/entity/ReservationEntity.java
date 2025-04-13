@@ -1,9 +1,11 @@
 package kr.hhplus.be.server.infrastructure.entity;
 
 import jakarta.persistence.*;
+import kr.hhplus.be.server.domain.reservation.ReservationStatus;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "reservation")
@@ -17,17 +19,13 @@ public class ReservationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
+    private UUID userId;
 
-    @ManyToOne
-    @JoinColumn(name = "concert_id")
-    private ConcertEntity concert;
+    private Long concertId;
 
-    private String status;
+    private ReservationStatus status;
 
     private LocalDateTime reservedAt;
 
-    private LocalDateTime expiredAt;
+    private LocalDateTime paidAt;
 }

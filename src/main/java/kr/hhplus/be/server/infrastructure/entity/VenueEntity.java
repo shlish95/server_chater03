@@ -3,27 +3,19 @@ package kr.hhplus.be.server.infrastructure.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.UUID;
-
 @Entity
-@Table(name = "payment")
+@Table(name = "venue")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-public class PaymentEntity {
+public class VenueEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private UUID userId;
+    private String name;
 
-    private Long reservationSeatId;
-
-    private BigDecimal amount;
-
-    private LocalDateTime paidAt;
+    private String location;
 }

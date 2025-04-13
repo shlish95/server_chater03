@@ -1,10 +1,7 @@
 package kr.hhplus.be.server.infrastructure.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,6 +12,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 public class UserEntity {
 
     @Id
@@ -27,6 +25,5 @@ public class UserEntity {
 
     private BigDecimal balance;
 
-    @Column(name = "create_at")
     private LocalDateTime createAt;
 }

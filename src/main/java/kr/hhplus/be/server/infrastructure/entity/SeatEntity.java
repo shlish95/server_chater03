@@ -3,6 +3,8 @@ package kr.hhplus.be.server.infrastructure.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "seat")
 @Getter
@@ -17,7 +19,7 @@ public class SeatEntity {
 
     private Long concertId;
 
-    private String name;
+    private String seatNumber;
 
-    private String status;
+    private LocalDateTime createAt;
 }

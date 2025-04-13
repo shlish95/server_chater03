@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "queue_token")
@@ -14,16 +15,13 @@ import java.time.LocalDateTime;
 public class QueueTokenEntity {
 
     @Id
-    private Long userId;    //FK
+    private UUID id;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
+    private Long userId;
 
     private Integer queuePosition;
 
     private LocalDateTime issuedAt;
 
-    private LocalDateTime expiresAt;
+    private LocalDateTime expiredAt;
 }
