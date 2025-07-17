@@ -19,11 +19,11 @@ public class PaymentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private UUID userId;
-
     private Long reservationSeatId;
 
     private BigDecimal amount;
+
+    private String status;
 
     private LocalDateTime paidAt;
 }

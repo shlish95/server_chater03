@@ -1,5 +1,6 @@
 package kr.hhplus.be.server.domain.queueToken;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -16,6 +17,11 @@ public class QueueToken {
         this.position = position;
         this.issuedAt = issuedAt;
         this.expiresAt = expiresAt;
+    }
+
+    public static QueueToken issue(UUID userId, int queuePosition, LocalDateTime issuedAt) {
+        LocalDateTime expiresAt = issuedAt.plusMinutes(5);
+        return new QueueToken(UUID.randomUUID(), userId, queuePosition, issuedAt, expiresAt);
     }
 
     public UUID getId() {

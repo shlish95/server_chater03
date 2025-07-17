@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface SeatRepository extends JpaRepository<SeatEntity, Long> {
-    List<SeatEntity> findAllByDate(LocalDate date);
+    List<Seat> findAvailableSeatsByConcertIdAndDate(Long concertId, LocalDate date);
 }

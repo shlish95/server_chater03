@@ -16,6 +16,11 @@ public class ReservationSeat {
         this.id = UUID.randomUUID();
     }
 
+    public static ReservationSeat reserve(UUID reservationId, UUID seatId, LocalDateTime expiresAt) {
+        return new ReservationSeat(reservationId, seatId, expiresAt);
+    }
+
+
     public UUID getId() {
         return id;
     }
